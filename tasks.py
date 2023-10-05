@@ -15,6 +15,7 @@ def order_robots_from_RobotSpareBin():
     """
     open_browser()
     download_excel()
+    read_excel()
 
 def open_browser():
     """Navigates to the given URL"""
@@ -24,3 +25,10 @@ def download_excel():
     """Downloads excel file from the given URL"""
     http = HTTP()
     http.download(url="https://robotsparebinindustries.com/orders.csv", overwrite=True)
+
+def read_excel():
+    """Read data from excel"""
+    file = Files()
+    file.open_workbook("orders.csv")
+    worksheet = file.read_worksheet_as_table("data", header=True)
+    file.close_workbook()
